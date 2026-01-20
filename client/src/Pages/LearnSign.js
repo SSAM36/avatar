@@ -11,6 +11,7 @@ import ybotPic from '../Models/ybot/ybot.png';
 
 import * as words from '../Animations/words';
 import * as alphabets from '../Animations/alphabets';
+import * as numbers from '../Animations/numbers';
 import { defaultPose } from '../Animations/defaultPose';
 
 import * as THREE from "three";
@@ -140,6 +141,21 @@ function LearnSign() {
     );
   }
 
+  let numberButtons = [];
+  for (let i = 0; i < numbers.numberList.length; i++) {
+    numberButtons.push(
+        <div className='col-md-4'>
+            <button className='signs w-100' onClick={()=>{
+              if(ref.animations.length === 0){
+                numbers[numbers.numberList[i]](ref);
+              }
+            }}>
+                {numbers.numberList[i]}
+            </button>
+        </div>
+    );
+  }
+
   return (
     <div className='container-fluid'>
       <div className='row'>
@@ -158,6 +174,14 @@ function LearnSign() {
             <div className='row'>
                 {
                     wordButtons
+                }
+            </div>
+            <h1 className='heading'>
+              Numbers
+            </h1>
+            <div className='row'>
+                {
+                    numberButtons
                 }
             </div>
         </div>
